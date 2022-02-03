@@ -242,12 +242,8 @@ xcuserdata
 # project files
 ada-capstone/API/DONOTADDTOGITHUBURLs.swift
 ada-capstone/API/callAPI.swift
-
-ada-capstone/Models/results.swift
 ada-capstone/Models/Users.swift
 ada-capstone/Database/getUsers.swift
-ada-capstone/Views/DetailView.swift
-ada-capstone/Models/tvDetailsModel.swift
 ada-capstone/Assets.xcassets/TMDB_logo.imageset/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg
 ada-capstone/Assets.xcassets/TMDB_logo.imageset/Contents.json
 

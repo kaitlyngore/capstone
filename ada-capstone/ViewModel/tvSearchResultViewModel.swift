@@ -50,17 +50,17 @@ import Combine
             result.name
         }
 
-//        var overview: String {
-//            result.overview
-//        }
+        var overview: String {
+            result.overview
+        }
 //
 //        var poster_path: String {
 //            result.poster_path
 //        }
 //
-//        var first_air_date: String {
-//            result.first_air_date
-//        }
+        var first_air_date: String {
+            result.first_air_date
+        }
 
 
     }

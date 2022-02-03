@@ -19,6 +19,7 @@ import Combine
                     
                     var str: String = String(data: data, encoding: .utf8)!
                     
+                    
                     return try? JSONDecoder().decode(TvSearchResponse.self, from: data)
                     }
 
@@ -53,11 +54,11 @@ import Combine
         var overview: String {
             result.overview
         }
-//
-//        var poster_path: String {
-//            result.poster_path
-//        }
-//
+
+        var poster_path: String {
+            result.poster_path ?? ""
+        }
+
         var first_air_date: String {
             result.first_air_date
         }

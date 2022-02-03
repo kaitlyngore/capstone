@@ -15,7 +15,7 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             VStack {
-            Text("Searching for \(searchText)")
+            Text(" ")
                 .searchable(text: $searchText, prompt: "Search for a series")
                 .onSubmit(of: .search) {
                    

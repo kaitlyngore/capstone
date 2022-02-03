@@ -9,37 +9,52 @@ import Foundation
 import SwiftUI
 
 struct DetailView: View {
-    let name = "name"
+    var showDetails: TvSearchResultViewModel
     let description = "description"
     let seasons = 11
     let network = "network"
     let poster_path = ""
     var body: some View {
-        NavigationView {VStack(alignment: .leading, spacing: 20) {
-            Image(poster_path)
+        VStack(spacing: 20) {
+            
+            
+            HStack {
+                       
+                               DetailPosterImageView(posterPath: showDetails.poster_path)
+                           
+                   }
+            
+            
+            
+    
+            
             HStack {
                 Text("Network: \(network)")
                 Spacer()
                 Text("Seasons: \(seasons)")}
             .padding()
-            HStack {Text("Description: \(description)")}
+            HStack {Text("Description: \(showDetails.overview)")}
             .padding()
+            
+//            Add a button to add to show list
         }
-        .navigationTitle("\(name)")
+        .navigationTitle("\(showDetails.name)")
+        .onAppear {
+//            make call to tv show details API using the showdetails.id as the end of the URL
         }
-                
-        }
-    
-    }
-    
-
-    
-
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView()
     }
 }
+
+
+//
+
+
+
+//struct DetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailView()
+//    }
+//}
 
 
 //struct TVDetails: Decodable {

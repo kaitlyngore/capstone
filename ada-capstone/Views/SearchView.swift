@@ -27,6 +27,7 @@ struct SearchView: View {
                 .navigationTitle("Search")
             SearchResultListView(results: model.searchResults)
             }}
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

@@ -245,16 +245,8 @@ ada-capstone/API/callAPI.swift
 ada-capstone/API/callAPI2.swift
 ada-capstone/Models/results.swift
 ada-capstone/Models/Users.swift
-ada-capstone/ada_capstoneApp.swift
-
 ada-capstone/Database/getUsers.swift
-ada-capstone/ViewModel/tvSearchResultViewModel.swift
-ada-capstone/Models/tvSearchResultModel.swift
-
 .gitignore
-ada-capstone/Views/SearchResultListView.swift
-ada-capstone/Views/SearchResultCellView.swift
-
 ada-capstone/Views/DetailView.swift
 ada-capstone/Models/tvDetailsModel.swift
 ada-capstone/Assets.xcassets/TMDB_logo.imageset/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg

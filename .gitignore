@@ -242,7 +242,7 @@ xcuserdata
 # project files
 ada-capstone/API/DONOTADDTOGITHUBURLs.swift
 ada-capstone/API/callAPI.swift
-ada-capstone/API/callAPI2.swift
+
 ada-capstone/Models/results.swift
 ada-capstone/Models/Users.swift
 ada-capstone/Database/getUsers.swift

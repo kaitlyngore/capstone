@@ -25,20 +25,9 @@ struct HomeView: View {
                         
                             Spacer()
                         }
-//                    list means scrolling region of the page
-//                        look into list styles
+                  
             List {
-//                Text("Recent")
-//                    .bold()
-//                    .font(.system(size: 20))
-                
-//                ForEach(shows.prefix(upTo: 5), id: \.self) { show in
-//                        HStack {
-//
-//                        Text(show.description.capitalized)
-//                        Spacer()
-//                            Image(systemName: "arrow.forward.circle.fill")
-//                        }
+
                 Section {ForEach(shows.prefix(upTo: 4), id: \.self) { show in
                         HStack {
                         
@@ -49,8 +38,6 @@ struct HomeView: View {
                     
                 
                 }
-            .listRowBackground(Color.yellow)
-//            .listStyle(PlainListStyle())
             
             .listStyle(GroupedListStyle())
                     }}
@@ -64,35 +51,26 @@ struct HomeView: View {
                                             Spacer()
                                         }
                 List {
-    //                Text("Recent")
-    //                    .bold()
-    //                    .font(.system(size: 20))
-                    
-    //                ForEach(shows.prefix(upTo: 5), id: \.self) { show in
-    //                        HStack {
-    //
-    //                        Text(show.description.capitalized)
-    //                        Spacer()
-    //                            Image(systemName: "arrow.forward.circle.fill")
-    //                        }
+    
                     Section {ForEach(shows, id: \.self) { show in
                             HStack {
                             
                             Text(show.description.capitalized)
                             Spacer()
                                 Image(systemName: "arrow.forward.circle.fill")
-                            }}}
+                            }
+                        
+                    }
+                        
+                }
                         
                     
-                    }
-                .listRowBackground(Color.yellow)
-    //            .listStyle(PlainListStyle())
-                
+            }
                 .listStyle(GroupedListStyle())
-            
-               
-        
-            }}}
+        }
+    }
+    
+}
         
 
 struct HomeView_Previews: PreviewProvider {

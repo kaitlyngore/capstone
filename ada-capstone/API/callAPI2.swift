@@ -7,14 +7,6 @@
 
 import Foundation
 
-
-//
-//enum NetworkError: Error {
-//    case badRequest
-//    case decodingError
-//}
-//
-
 enum NetworkError: Error {
     case badRequest
     case decodingError

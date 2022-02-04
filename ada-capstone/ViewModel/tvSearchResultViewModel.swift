@@ -102,7 +102,7 @@ import Combine
         }
 
         var first_air_date: String {
-            result.first_air_date
+            result.first_air_date ?? ""
         }
 
 

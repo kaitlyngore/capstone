@@ -21,10 +21,12 @@ import Combine
             let queryItemApiKey = URLQueryItem(name: "api_key", value: APIKey)
 
             let queryItemQuery = URLQueryItem(name: "query", value: searchText)
+            
+            let queryContentQuery = URLQueryItem(name: "include_adult", value: "false")
 
-            components.queryItems = [queryItemApiKey, queryItemQuery]
+            components.queryItems = [queryItemApiKey, queryItemQuery, queryContentQuery]
 //            var defaultUrl = URL(string: "https://api.themoviedb.org/3/search/tv")
-
+            
             do {
 
                 let searchResponse = try await callAPI<TvSearchResponse>().get(url: components.url!) { data in
@@ -32,7 +34,7 @@ import Combine
 
                     return try? JSONDecoder().decode(TvSearchResponse.self, from: data)
                     }
-
+                
                 DispatchQueue.main.async {self.searchResults =
                 searchResponse.results.map(TvSearchResultViewModel.init)
                 }
@@ -76,6 +78,8 @@ import Combine
     struct TvSearchResultViewModel: Identifiable {
 
         private let result: Result
+        
+        
 
         init(_ result: Result) {
             self.result = result
@@ -90,7 +94,7 @@ import Combine
         }
 
         var overview: String {
-            result.overview
+            result.overview ?? ""
         }
 
         var poster_path: String {

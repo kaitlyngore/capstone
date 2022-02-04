@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct SearchView: View {
-    @StateObject var model: TvSearchResultListViewModel = TvSearchResultListViewModel()
+    @StateObject var resultList: TvSearchResultListViewModel = TvSearchResultListViewModel()
     @State public var searchText = ""
     
     var body: some View {
@@ -21,11 +21,11 @@ struct SearchView: View {
                    
                     Task {
                             await
-                            model.populateResults(searchText: searchText)
+                        resultList.populateResults(searchText: searchText)
                         }
                 }
                 .navigationTitle("Search")
-            SearchResultListView(results: model.searchResults)
+            SearchResultListView(results: resultList.searchResults)
             }}
         .buttonStyle(PlainButtonStyle())
     }

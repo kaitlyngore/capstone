@@ -7,41 +7,56 @@
 
 import Foundation
 import SwiftUI
-
+//
 struct DetailView: View {
     var showDetails: TvSearchResultViewModel
+    //    @StateObject var calltoshow: TvDetailsListViewModel = TvDetailsListViewModel()
     let description = "description"
     let seasons = 11
     let network = "network"
     let poster_path = ""
     var body: some View {
+        ScrollView {
         VStack(spacing: 20) {
             
-            
             HStack {
-                       
-                               DetailPosterImageView(posterPath: showDetails.poster_path)
-                           
-                   }
-            
-            
-            
-    
-            
+                
+                DetailPosterImageView(posterPath: showDetails.poster_path)
+                
+            }
+            Button(action: {}) {
+                HStack {
+                    Image(systemName: "plus.circle")
+                        .font(.system(size: 18))
+                    Text("Add to My Shows")
+                        .fontWeight(.semibold)
+                        .font(.subheadline)
+                }
+            }
+            .padding()
+            .foregroundColor(.white)
+            .background(Color.indigo)
+            .cornerRadius(40)
             HStack {
                 Text("Network: \(network)")
                 Spacer()
-                Text("Seasons: \(seasons)")}
+                Text("Seasons: 11")
+                
+            }
             .padding()
-            HStack {Text("Description: \(showDetails.overview)")}
+            HStack {Text("\(showDetails.overview)")}
             .padding()
             
-//            Add a button to add to show list
+            
         }
         .navigationTitle("\(showDetails.name)")
         .onAppear {
-//            make call to tv show details API using the showdetails.id as the end of the URL
-        }
+            //            Task {
+            //                    await
+            //                calltoshow.getResults(showId: showDetails.id)
+            //                }
+            //            make call to tv show details API using the showdetails.id as the end of the URL
+        }}
     }
 }
 

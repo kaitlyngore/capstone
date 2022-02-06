@@ -24,7 +24,12 @@ struct DetailView: View {
                 DetailPosterImageView(posterPath: showDetails.poster_path)
                 
             }
-            Button(action: {}) {
+            Button(action: {
+                let tmdb_id = String(showDetails.id)
+                let new_show = SavedShow (name: showDetails.name, tmdb_id: tmdb_id)
+                showDetails.addShow(show: new_show)
+                
+            }) {
                 HStack {
                     Image(systemName: "plus.circle")
                         .font(.system(size: 18))

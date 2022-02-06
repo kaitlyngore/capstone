@@ -7,10 +7,12 @@
 
 import Foundation
 import Combine
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 @MainActor
     class TvSearchResultListViewModel: ObservableObject {
-
+        
         @Published var searchResults: [TvSearchResultViewModel] = []
 
         func populateResults(searchText: String) async {
@@ -45,37 +47,13 @@ import Combine
 
         }
 
+        
     }
 
-//@MainActor
-//    class TvSearchResultListViewModel: ObservableObject {
-//
-//        @Published var searchResults: [TvSearchResultViewModel] = []
-//
-//        func populateResults(searchText: String) async {
-//
-//            do {
-//                let searchResponse = try await callAPI<TvSearchResponse>().get(url: URL(string: "https://api.themoviedb.org/3/search/tv?api_key=\(APIKey)&language=en-US&page=1&query=\(searchText)&include_adult=false")!) { data in
-//
-//                    var str: String = String(data: data, encoding: .utf8)!
-//
-//
-//                    return try? JSONDecoder().decode(TvSearchResponse.self, from: data)
-//                    }
-//
-//                DispatchQueue.main.async {self.searchResults =
-//                searchResponse.results.map(TvSearchResultViewModel.init)
-//                }
-//
-//            } catch {
-//                print(error)
-//            }
-//
-//        }
-//
-//    }
-
     struct TvSearchResultViewModel: Identifiable {
+        let db = Firestore.firestore()
+        
+//        @Published var shows = [SavedShow]()
 
         private let result: Result
         
@@ -104,9 +82,17 @@ import Combine
         var first_air_date: String {
             result.first_air_date ?? ""
         }
-
+        func addShow( show: SavedShow ) {
+            do {
+           try _ = db.collection("shows").addDocument(from: show)
+        }
+            catch {
+                fatalError("Unable to encode task: \(error.localizedDescription)")
+            }
+        }
 
     }
 
 
 ////try to use url components
+// add db add function here??

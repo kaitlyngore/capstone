@@ -24,7 +24,9 @@ class callAPI<T: Decodable> {
             }
             
             guard let result = parse(data) else {
+                print(NetworkError.decodingError)
                 throw NetworkError.decodingError
+                
             }
             
             return result

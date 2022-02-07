@@ -11,10 +11,10 @@ import SwiftUI
 
 
 struct HomeView: View {
-    @ObservedObject var model = SavedShowViewModel()
+    @ObservedObject var savedShows = SavedShowViewModel()
     var body: some View {
         
-        List(model.list) {
+        List(savedShows.list) {
             item in NavigationLink(destination: {
                 SavedShowDetailView(showDetails: item)
             })
@@ -100,7 +100,7 @@ struct HomeView: View {
 //        }
     }
     init() {
-        model.getData()
+        savedShows.getData()
     }
 }
         

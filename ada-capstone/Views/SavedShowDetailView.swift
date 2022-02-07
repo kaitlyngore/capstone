@@ -25,7 +25,7 @@ struct SavedShowDetailView: View {
             }
             
                 HStack {
-                    Image(systemName: "plus.circle")
+                    Image(systemName: "minus.circle")
                         .font(.system(size: 18))
                     Text("Remove From My Shows")
                         .fontWeight(.semibold)

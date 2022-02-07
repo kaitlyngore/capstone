@@ -16,7 +16,7 @@ struct HomeView: View {
         
         List(model.list) {
             item in NavigationLink(destination: {
-                SearchView()
+                SavedShowDetailView(showDetails: item)
             })
             {
                 HStack(spacing: 20) {

@@ -19,7 +19,28 @@ struct HomeView: View {
                 SearchView()
             })
             {
-                Text(item.name)
+                HStack(spacing: 20) {
+                    VStack {
+                        HStack{
+                            PosterImageView(posterPath: item.poster_path!)
+                            VStack{
+                        HStack{
+                            
+                            Text(item.name)
+                                .bold()
+                            Spacer()
+                        }
+                        HStack{
+                            Text(item.first_air_date!.prefix(4))
+                            Spacer()
+                        }
+                            }
+                        }
+                    }}
+                
+                
+                
+                
             }}
 //            VStack(alignment: .leading) {
 //

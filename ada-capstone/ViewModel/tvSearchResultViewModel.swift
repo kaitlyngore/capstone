@@ -52,7 +52,6 @@ import FirebaseFirestoreSwift
 
     struct TvSearchResultViewModel: Identifiable {
         let db = Firestore.firestore()
-        
 //        @Published var shows = [SavedShow]()
 
         private let result: Result
@@ -90,8 +89,11 @@ import FirebaseFirestoreSwift
                 fatalError("Unable to encode task: \(error.localizedDescription)")
             }
         }
+        
+        
+            
+        }
 
-    }
 
 
 ////try to use url components

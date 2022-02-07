@@ -17,7 +17,7 @@ class SavedShowViewModel: ObservableObject {
 //        get db reference
         let db = Firestore.firestore()
 //        read the documents in the db at a specific path
-        db.collection("shows").getDocuments { snapshot, error in
+        db.collection("shows").order(by: "name").getDocuments { snapshot, error in
 //            check for errors
             if error == nil {
                 if let snapshot = snapshot {

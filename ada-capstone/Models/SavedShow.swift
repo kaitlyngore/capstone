@@ -14,5 +14,8 @@ struct SavedShow: Codable, Identifiable {
     @DocumentID var id: String?
     var name: String
     var tmdb_id: String
+    let overview: String?
+    let poster_path: String?
+    let first_air_date: String?
     @ServerTimestamp var createdTime: Timestamp?
 }

@@ -11,7 +11,6 @@ import SwiftUI
 struct DetailView: View {
     var showDetails: TvSearchResultViewModel
     //    @StateObject var calltoshow: TvDetailsListViewModel = TvDetailsListViewModel()
-    let description = "description"
     let seasons = 11
     let network = "network"
     let poster_path = ""
@@ -26,7 +25,7 @@ struct DetailView: View {
             }
             Button(action: {
                 let tmdb_id = String(showDetails.id)
-                let new_show = SavedShow (name: showDetails.name, tmdb_id: tmdb_id)
+                let new_show = SavedShow (name: showDetails.name, tmdb_id: tmdb_id, overview: showDetails.overview, poster_path: showDetails.poster_path, first_air_date: showDetails.first_air_date)
                 showDetails.addShow(show: new_show)
                 
             }) {

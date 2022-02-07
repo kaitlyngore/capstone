@@ -17,7 +17,7 @@ struct ContentView: View {
             
             
             HomeView()
-                .navigationBarTitle("Welcome, \(name)")
+                .navigationBarTitle("My Shows")
                                         }
         
             

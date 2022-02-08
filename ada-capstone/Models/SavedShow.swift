@@ -13,7 +13,7 @@ import FirebaseFirestoreSwift
 struct SavedShow: Codable, Identifiable {
     @DocumentID var id: String?
     var name: String
-    var tmdb_id: String
+    var tmdb_id: Int
     let overview: String?
     let poster_path: String?
     let first_air_date: String?

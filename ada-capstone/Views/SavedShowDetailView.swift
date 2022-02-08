@@ -10,6 +10,7 @@ import SwiftUI
 //
 struct SavedShowDetailView: View {
     var showDetails: SavedShow
+    @ObservedObject var savedShows = SavedShowViewModel()
     //    @StateObject var calltoshow: TvDetailsListViewModel = TvDetailsListViewModel()
     let seasons = 11
     let network = "network"
@@ -23,7 +24,9 @@ struct SavedShowDetailView: View {
                 DetailPosterImageView(posterPath: showDetails.poster_path!)
                 
             }
-            
+            Button(action: {
+                savedShows.deleteData(savedShow: showDetails)
+            }) {
                 HStack {
                     Image(systemName: "minus.circle")
                         .font(.system(size: 18))
@@ -35,6 +38,7 @@ struct SavedShowDetailView: View {
             .foregroundColor(.white)
             .background(Color.indigo)
             .cornerRadius(40)
+            }
             HStack {
                 Text("Network: \(network)")
                 Spacer()
@@ -47,15 +51,17 @@ struct SavedShowDetailView: View {
             }
             .padding()
             
-            
         }
-        .navigationTitle("\(showDetails.name)")
+        
         .onAppear {
             //            Task {
             //                    await
             //                calltoshow.getResults(showId: showDetails.id)
             //                }
             //            make call to tv show details API using the showdetails.id as the end of the URL
-        }}
+        }
+        .navigationBarTitle("\(showDetails.name)", displayMode: .inline)
+        }
+        
     }
 }

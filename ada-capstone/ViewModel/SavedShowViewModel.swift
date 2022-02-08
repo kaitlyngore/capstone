@@ -13,11 +13,51 @@ import FirebaseFirestoreSwift
 class SavedShowViewModel: ObservableObject {
     @Published var list = [SavedShow]()
     
+    func in_db(showDetails: TvSearchResultViewModel) -> Bool {
+        if (item.tmdb_id in self.list && item.tmdb_id == showDetails.id) {
+            var in_db: Bool = true} else {
+                var in_db = false
+        }
+        return in_db
+        }
+    
+        
+    
+    func deleteData(savedShow: SavedShow) {
+        let db = Firestore.firestore()
+        
+        db.collection("shows").document(savedShow.id!).delete { error in
+            if error == nil {
+//                no errors
+                DispatchQueue.main.async {
+                self.list.removeAll { show in
+                    return show.id == savedShow.id
+                
+            
+            }
+        }
+        
+        
+    }
+        }
+    }
+
+//        db.collection("shows").document(savedShow.id!).delete { error in
+//            if error == nil {
+//                self.list.removeAll {show in
+//                    return show.id!
+//                    == savedShow.id)
+//            }
+//        }
+//        }
+//
+        
+    
     func getData() {
 //        get db reference
         let db = Firestore.firestore()
 //        read the documents in the db at a specific path
-        db.collection("shows").order(by: "name").getDocuments { snapshot, error in
+        db.collection("shows").order(by: "name").addSnapshotListener { snapshot, error in
 //            check for errors
             if error == nil {
                 if let snapshot = snapshot {

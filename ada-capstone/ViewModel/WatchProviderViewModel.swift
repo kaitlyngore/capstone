@@ -14,8 +14,7 @@ class WatchProviderViewModel: ObservableObject {
     @Published var streamingProviders: [FlatrateItem] = []
     @Published var buyOptions: [BuyItem] = []
     @Published var link: String = ""
-//    private var flatrate: FlatrateItem
-//    private var buyingitems: BuyItem
+
     func populateResults(tmdb_id: String) async {
         var components = URLComponents()
         components.scheme = "https"
@@ -24,7 +23,6 @@ class WatchProviderViewModel: ObservableObject {
         let queryItemApiKey = URLQueryItem(name: "api_key", value: APIKey)
     
         components.queryItems = [queryItemApiKey]
-        //            var defaultUrl = URL(string: "https://api.themoviedb.org/3/search/tv")
         
         do {
             
@@ -36,13 +34,11 @@ class WatchProviderViewModel: ObservableObject {
             }
             
             var streamingProvidersList = watchProviderResponse.results.US.flatrate
-//            let streamingService = watchProviderResponse.results.US.flatrate.provider_name
             var buyOptionsList = watchProviderResponse.results.US.buy
             self.link = watchProviderResponse.results.US.link
-//            self.buyOptions = buyOptionsList
             
             self.streamingProviders =
-            streamingProvidersList
+            watchProviderResponse.results.US.flatrate
             let str = self.streamingProviders
             
             self.buyOptions =
@@ -57,29 +53,29 @@ class WatchProviderViewModel: ObservableObject {
     
     
 }
-
-class FlatrateViewModel: Identifiable, ObservableObject {
-    //        maybe later make enum
-    private let result: FlatrateItem
-    
-    
-    
-    init(_ result: FlatrateItem) {
-        self.result = result
-    }
-    
-    var provider_name: String {
-        result.provider_name
-    }
-    
-    var display_priority: Int {
-        result.display_priority
-    }
-    
-    var logo_path: String {
-        result.logo_path ?? ""
-    }
-}
+//
+//class FlatrateViewModel: Identifiable, ObservableObject {
+//    //        maybe later make enum
+//    private let result: FlatrateItem
+//
+//
+//
+//    init(_ result: FlatrateItem) {
+//        self.result = result
+//    }
+//
+//    var provider_name: String {
+//        result.provider_name
+//    }
+//
+//    var display_priority: Int {
+//        result.display_priority
+//    }
+//
+//    var logo_path: String {
+//        result.logo_path ?? ""
+//    }
+//}
 
 //class BuyItemViewModel: Identifiable, ObservableObject {
 //    //        maybe later make enum

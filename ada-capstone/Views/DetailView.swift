@@ -26,6 +26,10 @@ struct DetailView: View {
                 DetailPosterImageView(posterPath: showDetails.poster_path)
                 
             }
+            
+            VStack {
+                
+                
             if !showDetails.inDB {
             Button(action: {
 //                let tmdb_id = String(showDetails.id)
@@ -63,20 +67,18 @@ struct DetailView: View {
             .cornerRadius(40)
             }
             }
-            VStack {
-//                List(watchProviders.streamingProviders, id: \.self) {item in
-//                    Text(item.provider_name)
-                }
+            
             
             HStack {
 //                Text("Network: \(network)")
                 Spacer()
-                Text("Seasons: 11")
+                List(watchProviders.streamingProviders, id: \.self.provider_id) {item in
+                    Text("Watch Provider: \(item.provider_name)")}
                 
             .padding()
             HStack {Text("\(showDetails.overview)")}
             .padding()
-            
+            }
             
         }
         .navigationTitle("\(showDetails.name)")

@@ -39,6 +39,8 @@ class TvSearchResultListViewModel: ObservableObject {
             
             DispatchQueue.main.async {self.searchResults =
                 searchResponse.results.map(TvSearchResultViewModel.init)
+                
+                var str4 = self.searchResults
             }
             
         } catch {

@@ -1,8 +1,8 @@
 //
-//  watchProvidersModel.swift
+//  WatchProviders.swift
 //  ada-capstone
 //
-//  Created by Kaitlyn Gore on 2/9/22.
+//  Created by Kaitlyn Gore on 2/10/22.
 //
 
 import Foundation

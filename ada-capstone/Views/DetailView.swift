@@ -10,11 +10,12 @@ import SwiftUI
 //
 struct DetailView: View {
     @ObservedObject var showDetails: TvSearchResultViewModel
+    @ObservedObject var watchProviders = WatchProviderViewModel()
     //    @StateObject var calltoshow: TvDetailsListViewModel = TvDetailsListViewModel()
 //    @ObservedObject var savedShows = SavedShowViewModel()
 //    var in_db_check =
     let seasons = 11
-    let network = "network"
+//    let network = "network"
     let poster_path = ""
     var body: some View {
         ScrollView {
@@ -62,12 +63,16 @@ struct DetailView: View {
             .cornerRadius(40)
             }
             }
+            VStack {
+//                List(watchProviders.streamingProviders, id: \.self) {item in
+//                    Text(item.provider_name)
+                }
+            
             HStack {
-                Text("Network: \(network)")
+//                Text("Network: \(network)")
                 Spacer()
                 Text("Seasons: 11")
                 
-            }
             .padding()
             HStack {Text("\(showDetails.overview)")}
             .padding()
@@ -76,6 +81,10 @@ struct DetailView: View {
         }
         .navigationTitle("\(showDetails.name)")
         .onAppear {
+                    let tmdbId = String(showDetails.id)
+            Task {
+                    await
+                watchProviders.populateResults(tmdb_id: tmdbId)}
             //            Task {
             //                    await
             //                calltoshow.getResults(showId: showDetails.id)
@@ -84,7 +93,7 @@ struct DetailView: View {
         }}
     }
 }
-
+}
 
 
 //struct DetailView_Previews: PreviewProvider {

@@ -8,20 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showCreditsView = false
     var body: some View {
+        
         TabView {
             NavigationView {
                 
                 
                 HomeView()
                     .navigationBarTitle("My Shows")
+                
+                    .toolbar {
+                        NavigationLink(destination: CreditsView(showCreditsView: self.$showCreditsView)){
+                            Button(action: {
+                                self.showCreditsView.toggle()
+                            }) {
+                                Text("Credits")
+                                
+                            }}
+                        //                        end of toolbar
+                    }
             }
             
             
             .tabItem {
                 VStack{
-                    Image(systemName: "house.fill")
-                    Text("Home")
+                    Image(systemName: "sparkles.tv")
+                    Text("My Shows")
                 }}
             
             SearchView()
@@ -33,6 +46,8 @@ struct ContentView: View {
                 }
         }
         .accentColor(.indigo)
+        .sheet(isPresented: $showCreditsView) {
+            CreditsView(showCreditsView: self.$showCreditsView)}
     }
 }
 struct ContentView_Previews: PreviewProvider {

@@ -10,7 +10,6 @@ import Foundation
 
 struct TvSearchResponse: Decodable {
     let results: [Result]
-    
 }
 
 struct Result: Decodable {

@@ -11,7 +11,7 @@ import SwiftUI
 
 struct PosterImageView: View {
     var posterPath: String
-
+    
     var body: some View {
         AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)"))
         { image in
@@ -22,6 +22,6 @@ struct PosterImageView: View {
         }
     placeholder: {
         Image("placeholder_image")
-        }
+    }
     }
 }

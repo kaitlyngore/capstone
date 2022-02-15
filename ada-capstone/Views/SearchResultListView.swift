@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 struct SearchResultListView: View {
-
+    
     let results: [TvSearchResultViewModel]
-
+    
     var body: some View {
         List(results) {
             result in SearchResultCellView(searchResult: result)

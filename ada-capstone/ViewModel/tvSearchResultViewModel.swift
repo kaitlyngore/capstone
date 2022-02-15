@@ -27,7 +27,6 @@ class TvSearchResultListViewModel: ObservableObject {
         let queryContentQuery = URLQueryItem(name: "include_adult", value: "false")
         
         components.queryItems = [queryItemApiKey, queryItemQuery, queryContentQuery]
-        //            var defaultUrl = URL(string: "https://api.themoviedb.org/3/search/tv")
         
         do {
             
@@ -40,7 +39,6 @@ class TvSearchResultListViewModel: ObservableObject {
             DispatchQueue.main.async {self.searchResults =
                 searchResponse.results.map(TvSearchResultViewModel.init)
                 
-                var str4 = self.searchResults
             }
             
         } catch {

@@ -15,18 +15,19 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             VStack {
-            Text(" ")
-                .searchable(text: $searchText, prompt: "Search for a series")
-                .onSubmit(of: .search) {
-                   
-                    Task {
+                Text(" ")
+                    .searchable(text: $searchText, prompt: "Search for a series")
+                    .onSubmit(of: .search) {
+                        
+                        Task {
                             await
-                        resultList.populateResults(searchText: searchText)
+                            resultList.populateResults(searchText: searchText)
                         }
-                }
-                .navigationTitle("Search")
-            SearchResultListView(results: resultList.searchResults)
-            }}
+                    }
+                    .navigationTitle("Search")
+                SearchResultListView(results: resultList.searchResults)
+            }
+        }
         .buttonStyle(PlainButtonStyle())
     }
 }

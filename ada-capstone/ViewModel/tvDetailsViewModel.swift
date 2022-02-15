@@ -21,15 +21,12 @@ class TvDetailsViewModel: ObservableObject {
         components.host = "api.themoviedb.org"
         components.path = "/3/tv/\(tmdb_id)"
         let queryItemApiKey = URLQueryItem(name: "api_key", value: APIKey)
-    
+        
         components.queryItems = [queryItemApiKey]
         
         do {
             
             let tvDetailsResponse = try await callAPI<TVDetails>().get(url: components.url!) { data in
-                let httpData = data
-                let str = String(data: httpData, encoding: .utf8)!
-                
                 return try? JSONDecoder().decode(TVDetails.self, from: data)
             }
             self.number_of_seasons = tvDetailsResponse.number_of_seasons
@@ -40,7 +37,6 @@ class TvDetailsViewModel: ObservableObject {
             tvDetailsResponse.networks
             self.number_of_episodes = tvDetailsResponse.number_of_episodes
             
-            let str6 = self.number_of_episodes
         }
         catch {
             print(error)

@@ -37,12 +37,9 @@ struct HomeView: View {
                                 }
                             }
                         }
-                        
                     }
-                    
-                    
-                }}
-            
+                }
+            }
         }
     }
     init() {

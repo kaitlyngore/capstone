@@ -8,19 +8,18 @@
 import Foundation
 import SwiftUI
 //
+
 struct DetailView: View {
     @ObservedObject var showDetails: TvSearchResultViewModel
     @ObservedObject var watchProviders = WatchProviderViewModel()
+    @ObservedObject var tvDetails = TvDetailsViewModel()
     let columns = [GridItem(.flexible()),
-                GridItem(.flexible()),
-                GridItem(.flexible()),
-                GridItem(.flexible()),
-                   GridItem(.flexible()),]
-    //    @StateObject var calltoshow: TvDetailsListViewModel = TvDetailsListViewModel()
-//    @ObservedObject var savedShows = SavedShowViewModel()
-//    var in_db_check =
+                   GridItem(.flexible()),
+                   GridItem(.flexible()),
+                   GridItem(.flexible()),
+                 ]
     let seasons = 11
-//    let network = "network"
+
     let poster_path = ""
     var body: some View {
         ScrollView {
@@ -29,49 +28,86 @@ struct DetailView: View {
             HStack {
                 
                 DetailPosterImageView(posterPath: showDetails.poster_path)
-                
+                VStack {
+                    
+                    Text("Networks:")
+                        .bold()
+                    ForEach(tvDetails.networks, id: \.self.id) {item in
+                        Text("\(item.name)")}
+                    
+                    HStack{
+                    Text("Seasons: ")
+                            .bold()
+                        Text("\(tvDetails.number_of_seasons)")
+                    }
+                    HStack {
+                    Text("Episodes: ")
+                            .bold()
+                        Text("\(tvDetails.number_of_episodes)")
+                    }
+                    VStack{
+                        Text("Years Active:")
+                            .bold()
+                    
+                    HStack{
+                        if (tvDetails.first_air_date.prefix(4) != tvDetails.last_air_date.prefix(4)) {
+                        Text(tvDetails.first_air_date.prefix(4))
+                        Text("-")
+                            Text(tvDetails.last_air_date.prefix(4))} else {
+                                Text(tvDetails.first_air_date.prefix(4))
+                            }
+                    }
+                    }
+                    Text("Status: ")
+                            .bold()
+                        Text("\(tvDetails.status)")
+                    
+                    
+                    
+                    
+                    if !showDetails.inDB {
+                    Button(action: {
+        //                let tmdb_id = String(showDetails.id)
+                        let new_show = SavedShow (name: showDetails.name, tmdb_id: showDetails.id, overview: showDetails.overview, poster_path: showDetails.poster_path, first_air_date: showDetails.first_air_date)
+                        showDetails.addShow(show: new_show)
+                        
+                    }) {
+                        HStack {
+                            Image(systemName: "plus.circle")
+                                .font(.system(size: 18))
+                            Text("My Shows")
+                                .fontWeight(.semibold)
+                                .font(.subheadline)
+                        }
+                    }
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.indigo)
+                    .cornerRadius(40)
+                    } else {
+                        Button(action: {
+                            
+                            showDetails.deleteData()
+                    }) {
+                        HStack {
+                            Image(systemName: "minus.circle")
+                                .font(.system(size: 18))
+                            Text("My Shows")
+                                .fontWeight(.semibold)
+                                .font(.subheadline)
+                        }
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.indigo)
+                    .cornerRadius(40)
+                    }
+                    }
+                    
+                }
             }
+            .padding()
             
             VStack {
-                
-                
-            if !showDetails.inDB {
-            Button(action: {
-//                let tmdb_id = String(showDetails.id)
-                let new_show = SavedShow (name: showDetails.name, tmdb_id: showDetails.id, overview: showDetails.overview, poster_path: showDetails.poster_path, first_air_date: showDetails.first_air_date)
-                showDetails.addShow(show: new_show)
-                
-            }) {
-                HStack {
-                    Image(systemName: "plus.circle")
-                        .font(.system(size: 18))
-                    Text("Add to My Shows")
-                        .fontWeight(.semibold)
-                        .font(.subheadline)
-                }
-            }
-            .padding()
-            .foregroundColor(.white)
-            .background(Color.indigo)
-            .cornerRadius(40)
-            } else {
-                Button(action: {
-                    
-                    showDetails.deleteData()
-            }) {
-                HStack {
-                    Image(systemName: "minus.circle")
-                        .font(.system(size: 18))
-                    Text("Remove From My Shows")
-                        .fontWeight(.semibold)
-                        .font(.subheadline)
-                }
-            .padding()
-            .foregroundColor(.white)
-            .background(Color.indigo)
-            .cornerRadius(40)
-            }
-            }
             
             
             HStack {
@@ -107,7 +143,10 @@ struct DetailView: View {
                     let tmdbId = String(showDetails.id)
             Task {
                     await
-                watchProviders.populateResults(tmdb_id: tmdbId)}
+                watchProviders.populateResults(tmdb_id: tmdbId)
+                
+                await tvDetails.populateResults(tmdb_id: tmdbId)
+            }
             //            Task {
             //                    await
             //                calltoshow.getResults(showId: showDetails.id)

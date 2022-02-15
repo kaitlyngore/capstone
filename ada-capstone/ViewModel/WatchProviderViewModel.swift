@@ -10,7 +10,6 @@ import Foundation
 
 @MainActor
 class WatchProviderViewModel: ObservableObject {
-//    @Published var watchProviders: [WatchProviderViewModel] = []
     @Published var streamingProviders: [FlatrateItem] = []
     @Published var buyOptions: [BuyItem] = []
     @Published var link: String = ""
@@ -53,75 +52,3 @@ class WatchProviderViewModel: ObservableObject {
     
     
 }
-//
-//class FlatrateViewModel: Identifiable, ObservableObject {
-//    //        maybe later make enum
-//    private let result: FlatrateItem
-//
-//
-//
-//    init(_ result: FlatrateItem) {
-//        self.result = result
-//    }
-//
-//    var provider_name: String {
-//        result.provider_name
-//    }
-//
-//    var display_priority: Int {
-//        result.display_priority
-//    }
-//
-//    var logo_path: String {
-//        result.logo_path ?? ""
-//    }
-//}
-
-//class BuyItemViewModel: Identifiable, ObservableObject {
-//    //        maybe later make enum
-//    private let buyItem: BuyItem
-//    
-//    
-//    
-//    init(_ result: BuyItem) {
-//        self.buyItem = result
-//    }
-//    
-//    var provider_name: String {
-//        buyItem.provider_name
-//    }
-//    
-//    var display_priority: Int {
-//        buyItem.display_priority
-//    }
-//    
-//    var logo_path: String {
-//        buyItem.logo_path ?? ""
-//    }
-//}
-//class WatchProviderResponseModel: Identifiable, ObservableObject {
-//    let db = Firestore.firestore()
-//    //        maybe later make enum
-//    private let watchProviders: WatchProviderResponse
-//
-//
-//
-//    init(_ result: WatchProviderResponse) {
-//        self.watchProviders = result
-//    }
-//
-//    var US: CountryCode {
-//        providers.US
-//    }
-//
-//    var streaming: [FlatrateItem] {
-//        providers.US
-//    }
-//
-//    var buyOptions: [BuyItem] {
-//        providers.US
-//    }
-//}
-//
-//
-//str    String    "{\"id\":97546,\"results\":{\"AE\":{\"link\":\"https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=AE\",\"flatrate\":[{\"display_priority\":11,\"logo_path\":\"/6uhKBfmtzFqOcLousHwZuzcrScK.jpg\",\"provider_id\":350,\"provider_name\":\"Apple TV Plus\"}]},\"AR\":{\"link\":\"https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=AR\",\"flatrate\":[{\"display_priority\":11,\"logo_path\":\"/6uhKBfmtzFqOcLousHwZuzcrScK.jpg\",\"provider_id\":350,\"provider_name\":\"Apple TV Plus\"}]},\"AT\":{\"link\":\"https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=AT\",\"flatrate\":[{\"display_priority\":11,\"logo_path\":\"/6uhKBfmtzFqOcLousHwZuzcrScK.jpg\",\"provider_id\":350,\"provider_name\":\"Apple TV Plus\"}]},\"AU\":{\"link\":\"https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=AU\",\"flatrate\":[{\"display_priority\":11,\"logo_path\":\"/6uhKBfmtzFqOcLousHwZuzcrScK.jpg\",\"provider_id\":350,\"provider_name\":\"Apple TV Plus\"}]},\"BE\":{\"link\":\"https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=BE\",\"flatrate\":[{\"display_priority\":11,\"logo_path\":\"/6uhKBfmtzFqOcLousHwZuzcrScK"...

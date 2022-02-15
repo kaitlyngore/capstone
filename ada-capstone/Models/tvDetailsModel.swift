@@ -7,23 +7,32 @@
 
 import Foundation
 
-struct TVDetails: Decodable {
+struct TVDetails: Decodable, Identifiable {
     let id: Int
-    let name: String
+//    let name: String
     let number_of_episodes: Int
     let number_of_seasons: Int
-    let poster_path: String
     let first_air_date: String
-    let seasons: [Seasons]
+    let last_air_date: String
+    let status: String
+//    let poster_path: String
+//    let first_air_date: String
+    let networks: [Network]
 }
 
-struct Seasons: Decodable {
-    let episode_count: String
+struct Network: Decodable, Identifiable {
     let id: Int
     let name: String
-    let overview: String
-    let poster_path: String
-    let season_number: Int
-    let air_date: String
+    let logo_path: String
 }
+//
+//struct Season: Decodable, Identifiable {
+//    let episode_count: String
+//    let id: Int
+//    let name: String
+//    let overview: String
+//    let poster_path: String?
+//    let season_number: Int
+//    let air_date: String
+//}
 

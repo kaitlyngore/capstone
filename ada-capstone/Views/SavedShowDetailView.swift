@@ -11,6 +11,12 @@ import SwiftUI
 struct SavedShowDetailView: View {
     var showDetails: SavedShow
     @ObservedObject var savedShows = SavedShowViewModel()
+    @ObservedObject var watchProviders = WatchProviderViewModel()
+    let columns = [GridItem(.flexible()),
+                GridItem(.flexible()),
+                GridItem(.flexible()),
+                GridItem(.flexible()),
+                   GridItem(.flexible()),]
     //    @StateObject var calltoshow: TvDetailsListViewModel = TvDetailsListViewModel()
     let seasons = 11
     let network = "network"
@@ -45,7 +51,30 @@ struct SavedShowDetailView: View {
                 Text("Seasons: 11")
                 
             }
-            .padding()
+            HStack {
+                VStack{
+                Text("Now Streaming On:")
+                        .font(.headline)
+                Spacer()
+                LazyVGrid(columns: columns, spacing: 10) {
+                    ForEach(watchProviders.streamingProviders, id: \.self.provider_id) {item in
+                        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/original\(item.logo_path ?? "")"))
+                        { image in
+                            image.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: 50, maxHeight: 50)
+                                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                .shadow(radius: 7)
+                        }
+                    placeholder: {
+                        Image("placeholder_image")
+                        }
+//                    Text("\(item.provider_name)")}
+                    }
+                }
+            }
+            }
+            
             HStack {
                 Text("\(showDetails.overview ?? "")")
             }
@@ -54,6 +83,10 @@ struct SavedShowDetailView: View {
         }
         
         .onAppear {
+            let tmdbId = String(showDetails.tmdb_id)
+    Task {
+            await
+        watchProviders.populateResults(tmdb_id: tmdbId)}
             //            Task {
             //                    await
             //                calltoshow.getResults(showId: showDetails.id)

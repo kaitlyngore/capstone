@@ -11,6 +11,11 @@ import SwiftUI
 struct DetailView: View {
     @ObservedObject var showDetails: TvSearchResultViewModel
     @ObservedObject var watchProviders = WatchProviderViewModel()
+    let columns = [GridItem(.flexible()),
+                GridItem(.flexible()),
+                GridItem(.flexible()),
+                GridItem(.flexible()),
+                   GridItem(.flexible()),]
     //    @StateObject var calltoshow: TvDetailsListViewModel = TvDetailsListViewModel()
 //    @ObservedObject var savedShows = SavedShowViewModel()
 //    var in_db_check =
@@ -70,13 +75,29 @@ struct DetailView: View {
             
             
             HStack {
-//                Text("Network: \(network)")
+                VStack{
+                Text("Now Streaming On:")
+                        .font(.headline)
                 Spacer()
-                List(watchProviders.streamingProviders, id: \.self.provider_id) {item in
-                    Text("Watch Provider: \(item.provider_name)")}
-                
-            .padding()
-            HStack {Text("\(showDetails.overview)")}
+                LazyVGrid(columns: columns, spacing: 10) {
+                    ForEach(watchProviders.streamingProviders, id: \.self.provider_id) {item in
+                        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/original\(item.logo_path ?? "")"))
+                        { image in
+                            image.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: 50, maxHeight: 50)
+                                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                .shadow(radius: 7)
+                        }
+                    placeholder: {
+                        Image("placeholder_image")
+                        }
+//                    Text("\(item.provider_name)")}
+                    }
+                }
+            }
+            }
+            HStack {Text("\(showDetails.overview)")
             .padding()
             }
             

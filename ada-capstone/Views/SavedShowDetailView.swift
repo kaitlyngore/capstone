@@ -84,7 +84,7 @@ struct SavedShowDetailView: View {
                     }
                 }
                 .padding()
-                HStack {
+                VStack {
                     VStack{
                         Text("Now Streaming On:")
                             .font(.headline)
@@ -106,12 +106,13 @@ struct SavedShowDetailView: View {
                             }
                         }
                     }
-                }
+//                    .padding()
+                
                 
                 HStack {
                     Text("\(showDetails.overview ?? "")")
-                }
-                //                .padding()
+                }}
+                                .padding()
                 
             }
             

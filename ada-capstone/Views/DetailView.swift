@@ -106,7 +106,7 @@ struct DetailView: View {
                 
                 
                 
-                HStack {
+                VStack {
                     VStack{
                         Text("Now Streaming On:")
                             .font(.headline)
@@ -127,13 +127,13 @@ struct DetailView: View {
                             }
                         }
                     }
-                    
-                }
+//                    .padding()
+                
                 HStack {Text("\(showDetails.overview)")
                     
                 }
-                
-                
+            }
+                .padding()
                 
                 .navigationTitle("\(showDetails.name)")
                 .onAppear {

@@ -1,3 +1,6 @@
+
+
+
 # capstone
 
 ## Description
@@ -23,3 +26,7 @@ At https://firebase.google.com/, create a new project. Follow on-screen instruct
 ## Resources
 - https://developers.themoviedb.org/
 - https://firebase.google.com/docs
+
+## Demo
+
+https://user-images.githubusercontent.com/86855380/174407553-ec485ac1-6f16-44dc-bb80-1ff2eeb8a034.mp4
